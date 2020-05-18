@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '@/router'
+
 export default {
 	namespaced: true,
 	state: {
@@ -49,7 +50,7 @@ export default {
 			// send signin in request to api with email and password
 			const response = await axios.post('sign-in', formData)
 
-			// dispatch attemp to commit the token to state
+			// dispatch attempt to commit the token to state
 			dispatch('attempt', response.data.token)
 		},
 

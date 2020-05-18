@@ -116,6 +116,7 @@ export default {
 	}
 }
 </script>
+
 <style>
 .clear {
 	clear: both;

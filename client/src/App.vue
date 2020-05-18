@@ -8,6 +8,7 @@
 import AppLayout from '@/components/layouts/AppLayout'
 import GuestLayout from '@/components/layouts/GuestLayout'
 import { mapGetters } from 'vuex'
+
 export default {
 	computed: {
 		...mapGetters({
