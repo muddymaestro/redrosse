@@ -3,7 +3,7 @@
     <NavBar />
     <v-content class="indigo lighten-5">
       <div class="ribon elevation-2"></div>
-      <router-view/>
+      <router-view :key="$route.path"/>
     </v-content>
     <FooterBar />
   </v-app>

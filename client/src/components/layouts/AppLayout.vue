@@ -94,7 +94,7 @@
       </v-col>
 
       <v-col class="py-0" cols="12" lg="9" md="9" sm="6">
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </v-col>
       <footer-bar />
     </v-row>

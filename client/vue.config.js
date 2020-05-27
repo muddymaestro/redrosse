@@ -6,6 +6,6 @@ module.exports = {
 	],
 	devServer: {
 		port: 8080,
-		proxy: 'https://localhost/redrosse/api/public/api'
+		proxy: 'http://localhost/redrosse/api/public/api'
 	}
 }

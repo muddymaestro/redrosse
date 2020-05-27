@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <component v-bind:is="layout"></component>
+    <component v-bind:is="layout"></component>  
   </v-app>
 </template>
 
