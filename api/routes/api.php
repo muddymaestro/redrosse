@@ -14,5 +14,8 @@ Route::group([ 'middleware' => 'auth:api', 'namespace' => 'Auth' ], function() {
 });
 
 Route::group([ 'middleware' => 'auth:api' ], function() {
-    Route::post('/post', 'PostController@store')->name('post.create');
+    Route::post('/post', 'PostController@store');
+    Route::get('/posts', 'PostController@index');
+    Route::get('/like-post/{id}', 'LikeController@likePost');
+    Route::get('/unlike-post/{id}', 'LikeController@unlikePost');
 });

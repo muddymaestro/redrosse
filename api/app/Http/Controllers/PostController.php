@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with(['user', 'likes'])->orderBy('created_at', 'DESC')->get();
+        return response()->json(['posts' => $posts]);
     }
 
     /**
@@ -47,7 +48,7 @@ class PostController extends Controller
         $post->user_id = $userId;
         $post->body = $request->post;
 
-        if($request->has('image')) {
+        if($request->file('image')) {
             
             $image = $request->file('image');
       
@@ -68,7 +69,7 @@ class PostController extends Controller
         }
         
         $post->save();
-        $data = Post::with('user')->find($post->id);
+        $data = Post::with(['user', 'likes'])->find($post->id);
         
         return response()->json(['post' => $data]);
     }

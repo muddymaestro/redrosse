@@ -15,24 +15,21 @@ class LikeController extends Controller
         $post = Post::find($id);
         $post->like();
 
-        Session::flash('success', 'You liked this post');
+        $like = Like::where('likeable_id', $post->id);
 
-        // if(Auth::user()->id !== $post->user->id)
-        // {
-        //     $post->user->notify(new Likes($post));
-        // }
-
-        return response()->json(['post_like' => $post->likes]);
+        return response()->json(['postLike' => $like, 'postId' => $post->id]);
     }
 
-    public function unlikePost($post_id)
+    public function unlikePost($postId)
     {
-        $like = Like::select('id')->where('user_id', Auth::user()->id)
-            ->where('likeable_id', $post_id)
+        $likeId = Like::select('id')->where('user_id', Auth::user()->id)
+            ->where('likeable_id', $postId)
             ->first();
-        $like->delete();
+
+        $id = $likeId;
+        $likeId->delete();
         
-        return response()->json(['post_unlike' => $like]);
+        return response()->json(['likeId' => $id, 'postId' => $postId]);
     }
 
     public function likeComment($id)
