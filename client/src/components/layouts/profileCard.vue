@@ -20,12 +20,6 @@
       <v-btn text color="accent accent-10">Follow</v-btn>
       <v-btn text color="accent accent-10">Message</v-btn>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-share-variant</v-icon>
-      </v-btn>
     </v-card-actions>
   </v-card>
 </template>

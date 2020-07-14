@@ -6,10 +6,11 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Overtrue\LaravelFollow\Followable;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable, Followable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'fullname', 'uname', 'email', 'password',
+        'fullname', 'uname', 'email', 'password', 'home_town', 'current_city', 'phone', 'gender', 'dob', 'bio'
     ];
 
     /**
@@ -61,6 +62,16 @@ class User extends Authenticatable implements JWTSubject
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function postedOnUser()
+    {
+        return $this->hasMany(Wall::class, 'posted_on_user_id');
+    }
+
+    public function postedByUser()
+    {
+        return $this->hasMany(Wall::class, 'posted_by_user_id');
     }
 
     public function comments()

@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['user', 'likes'])->orderBy('created_at', 'DESC')->get();
+        $posts = Post::with(['user.followers', 'user.followings', 'likes', 'comments.user', 'comments.likes'])->orderBy('created_at', 'DESC')->get();
         return response()->json(['posts' => $posts]);
     }
 
@@ -69,7 +69,7 @@ class PostController extends Controller
         }
         
         $post->save();
-        $data = Post::with(['user', 'likes'])->find($post->id);
+        $data = Post::with(['user', 'likes', 'comments.user', 'comments.likes'])->find($post->id);
         
         return response()->json(['post' => $data]);
     }

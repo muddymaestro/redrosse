@@ -16,6 +16,11 @@ class Like extends Model
         return $this->belongsTo('App\Post');
     }
 
+    public function wall_post()
+    {
+        return $this->belongsTo('App\Wall');
+    }
+
     public function comment()
     {
         return $this->belongsTo('App\Comment');

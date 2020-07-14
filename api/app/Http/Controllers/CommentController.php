@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Post;
 use App\Comment;
+use App\Wall;
 
 class CommentController extends Controller
 {
@@ -15,19 +16,26 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $post_id)
+    public function store(Request $request, $postId)
     {
-        $request->validate(['data.comment' => 'required']);
+        $request->validate(['comment' => 'required']);
 
-        $post = Post::find($post_id);
-        $comment = $post->addComment($request->input('data.comment'));
+        $post = Post::find($postId);
+        $comment = $post->addComment($request->input('comment'));
+        $commentWithUser = Comment::with('user', 'likes')->where('id', $comment->id)->where('commentable_id', $postId)->first();
 
-        // if(Auth::user()->id !== $post->user->id)
-        // {
-        //     $post->user->notify(new Comments($comment));
-        // }
+        return response()->json(['comment' => $commentWithUser, 'postId' => $post->id]);
+    }
 
-        return response()->json(['comment' => $comment, 'username' => $comment->user->name]);
+    public function wallPostComment(Request $request, $postId)
+    {
+        $request->validate(['comment' => 'required']);
+
+        $post = Wall::find($postId);
+        $comment = $post->addComment($request->input('comment'));
+        $commentWithUser = Comment::with('user', 'likes')->where('id', $comment->id)->where('commentable_id', $postId)->first();
+
+        return response()->json(['comment' => $commentWithUser, 'postId' => $post->id]);
     }
 
     public function reply(Request $request, $comment_id)

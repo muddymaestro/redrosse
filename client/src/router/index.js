@@ -66,9 +66,30 @@ const routes = [
 		beforeEnter: auth
 	},
 	{
+		path: '/friend-profile',
+		name: 'FriendProfile',
+		props: true,
+		component: () => import('@/views/friend_profile.vue'),
+		beforeEnter: auth
+	},
+	{
 		path: '/messages',
 		name: 'Messages',
+		props: true,
 		component: () => import('@/views/Messages.vue'),
+		beforeEnter: auth
+	},
+	{
+		path: '/messages/user',
+		name: 'Message',
+		props: true,
+		component: () => import('@/views/Messages.vue'),
+		beforeEnter: auth
+	},
+	{
+		path: '/following',
+		name: 'Following',
+		component: () => import('@/views/Following.vue'),
 		beforeEnter: auth
 	},
 	{

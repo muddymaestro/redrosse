@@ -2,7 +2,6 @@
   <v-row>
     <v-col cols="12" lg="8" md="6" sm="4">
       <v-content>
-        <h3>New Post</h3>
         <PostForm />
 
         <h3>News Feed</h3>
@@ -10,9 +9,9 @@
       </v-content>
     </v-col>
 
-    <v-col cols="12" md="2">
+    <v-col cols="12" md="4">
       <v-content>
-        Content
+        <Following />
       </v-content>
     </v-col>
   </v-row>
@@ -21,12 +20,14 @@
 <script>
 import PostForm from '@/components/post/PostForm';
 import PostCard from '@/components/post/PostCard';
+import Following from '@/components/following/Following';
 
 export default {
   name: 'Home',
   components: {
     PostForm,
-    PostCard
+    PostCard,
+    Following
   }
 }
 </script>
