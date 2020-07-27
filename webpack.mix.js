@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 require('vuetifyjs-mix-extension')
 /*
@@ -25,8 +26,10 @@ mix.babelConfig({
 
  mix.webpackConfig({
    output: {
-      publicPath: '/public/',
+      filename: "[name].bundle.js",
       chunkFilename: '[name].[chunkhash].js',
+      path: path.resolve(__dirname, 'public'),
+      publicPath: '/public/'
    }
 });
 
