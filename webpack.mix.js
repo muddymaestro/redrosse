@@ -20,15 +20,17 @@ mix.js('resources/js/app.js', 'public/js').vuetify('vuetify-loader')
    processCssUrls: false,
 });
 
+if (mix.inProduction()) {
+   mix.version();
+}
+
 mix.babelConfig({
    plugins: ['@babel/plugin-syntax-dynamic-import'],
  });
 
  mix.webpackConfig({
    output: {
-      filename: "[name].bundle.js",
-      chunkFilename: '[name].[chunkhash].js',
-      path: path.resolve(__dirname, 'public'),
+      chunkFilename: 'js/[name].js',
       publicPath: '/public/'
    }
 });
