@@ -25,7 +25,7 @@ mix.babelConfig({
 
  mix.webpackConfig({
    output: {
-      publicPath: '/',
+      publicPath: '/public/',
       chunkFilename: '[name].[chunkhash].js',
    }
 });
