@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[17],{331:function(t,n,i){"use strict";i.r(n);var e={name:"Notifications"},s=i(4),o=Object(s.a)(e,(function(){var t=this.$createElement;return(this._self._c||t)("p",[this._v("Notifications")])}),[],!1,null,null,null);n.default=o.exports}}]);
