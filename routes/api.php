@@ -13,7 +13,7 @@ Route::group([ 'middleware' => 'auth:api', 'namespace' => 'Auth' ], function() {
     Route::get('me', 'MeController');
 });
 
-Route::group([ 'middleware' => 'auth:api' ], function() {
+Route::group([ 'middleware' => ['auth:api', 'cors'] ], function() {
     Route::get('/users', 'UserController@index');
     Route::put('/update-profile', 'UserController@updateProfile');
     Route::post('/update-profile-picture', 'UserController@updateProfilePicture');
