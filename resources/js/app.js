@@ -12,6 +12,23 @@ import axios from 'axios'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 
+// Components
+import Welcome from './views/Welcome.vue'
+import SignIn from './components/auth/SignIn.vue'
+import SignUp from './components/auth/SignUp.vue'
+import Home from './views/Home.vue'
+import Profile from './views/Profile.vue'
+import FriendProfile from './views/friend_profile.vue'
+import Messages from './views/Messages.vue'
+import Message from './views/Messages.vue'
+import Following from './views/Following.vue'
+import Notifications from './views/Notifications.vue'
+import Settings from './views/Settings.vue'
+import About from './views/About.vue'
+import ContactUs from './views/ContactUs.vue'
+import Terms from './views/Terms.vue'
+import Privacy from './views/Privacy.vue'
+
 require('./store/subscriber')
 Vue.use(VueRouter)
 
@@ -29,7 +46,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'Welcome',
-		component: () => import('./views/Welcome.vue'),
+		component: Welcome,
 		beforeEnter: (to, from, next) => {
 			if (store.getters['auth/authCheck']) {
 				return next({
@@ -42,7 +59,7 @@ const routes = [
 	{
 		path: '/signin',
 		name: 'SignIn',
-		component: () => import('./components/auth/SignIn.vue'),
+		component: SignIn,
 		beforeEnter: (to, from, next) => {
 			if (store.getters['auth/authCheck']) {
 				return next({
@@ -55,7 +72,7 @@ const routes = [
 	{
 		path: '/signup',
 		name: 'SignUp',
-		component: () => import('./components/auth/SignUp.vue'),
+		component: SignUp,
 		beforeEnter: (to, from, next) => {
 			if (store.getters['auth/authCheck']) {
 				return next({
@@ -68,73 +85,73 @@ const routes = [
 	{
 		path: '/home',
 		name: 'Home',
-		component: () => import('./views/Home.vue'),
+		component: Home,
 		beforeEnter: auth
 	},
 	{
 		path: '/profile',
 		name: 'Profile',
-		component: () => import('./views/Profile.vue'),
+		component: Profile,
 		beforeEnter: auth
 	},
 	{
 		path: '/friend-profile',
 		name: 'FriendProfile',
 		props: true,
-		component: () => import('./views/friend_profile.vue'),
+		component: FriendProfile,
 		beforeEnter: auth
 	},
 	{
 		path: '/messages',
 		name: 'Messages',
 		props: true,
-		component: () => import('./views/Messages.vue'),
+		component: Messages,
 		beforeEnter: auth
 	},
 	{
 		path: '/messages/user',
 		name: 'Message',
 		props: true,
-		component: () => import('./views/Messages.vue'),
+		component: Message,
 		beforeEnter: auth
 	},
 	{
 		path: '/following',
 		name: 'Following',
-		component: () => import('./views/Following.vue'),
+		component: Following,
 		beforeEnter: auth
 	},
 	{
 		path: '/notifications',
 		name: 'Notifications',
-		component: () => import('./views/Notifications.vue'),
+		component: Notifications,
 		beforeEnter: auth
 	},
 	{
 		path: '/settings',
 		name: 'Settings',
-		component: () => import('./views/Settings.vue'),
+		component: Settings,
 		beforeEnter: auth
 	},
 	{
 		path: '/about',
 		name: 'About',
-		component: () => import('./views/About.vue')
+		component: About
 	},
 	{
 		path: '/contact-us',
 		name: 'ContactUs',
-		component: () => import('./views/ContactUs.vue')
+		component: ContactUs
 	},
 	{
 		path: '/terms-and-conditions',
 		name: 'Terms',
-		component: () => import('./views/Terms.vue')
+		component: Terms
 	},
 	{
 		path: '/privacy-policy',
 		name: 'Privacy',
-		component: () => import('./views/Privacy.vue')
+		component: Privacy
 	}
 ]
 
