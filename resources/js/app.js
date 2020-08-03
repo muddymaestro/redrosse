@@ -162,7 +162,7 @@ const router = new VueRouter({
 
 require('./bootstrap');
 
-axios.defaults.baseURL = 'https://redrosse.com/app/public/api'
+axios.defaults.baseURL = 'http://redrosse.com/app/public/api'
 sync(store, router)
 
 //store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
