@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['https://redrosse.com/app/public/api/*'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
