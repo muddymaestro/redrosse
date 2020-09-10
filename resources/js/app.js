@@ -6,6 +6,7 @@
 
 import Vue from 'vue'
 import vuetify from './plugins/vuetify'
+import store from './store'
 
 //window.Vue = require('vue');
 
@@ -24,6 +25,8 @@ Vue.component('navbar', require('./components/layouts/NavBar.vue').default);
 Vue.component('footerbar', require('./components/layouts/FooterBar.vue').default);
 Vue.component('slider', require('./components/auth/Slider.vue').default);
 Vue.component('sign-in-form', require('./components/auth/SignInForm.vue').default);
+Vue.component('post-card', require('./components/post/PostCard.vue').default);
+Vue.component('post-form', require('./components/post/PostForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,7 +34,7 @@ Vue.component('sign-in-form', require('./components/auth/SignInForm.vue').defaul
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+new Vue({
+    store: store,
     vuetify
-});
+}).$mount('#app');

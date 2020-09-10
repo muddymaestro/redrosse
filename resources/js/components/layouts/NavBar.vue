@@ -6,7 +6,7 @@
       </div>
     </div>
 
-    <template v-if="Object.keys(authUser).length > 0">  
+    <template v-if="authCheck">  
       <v-btn color="primary" depressed small>Home</v-btn>
       <v-btn color="primary" depressed small>Profile</v-btn>
       <v-btn color="primary" depressed small>Messages</v-btn>
@@ -14,18 +14,18 @@
     </template>
 
     <v-spacer></v-spacer>
-    <template v-if="Object.keys(authUser).length < 1">
+    <template v-if="!authCheck">
       <v-btn color="primary" right depressed small>Sign In</v-btn>
       <v-btn color="primary" depressed small righ>Sign Up</v-btn>
     </template>
-    <template>
+    <template  v-else>
         <div class="text-right">
           <v-menu offset-y nudge-top close-on-click transition="fade-transition">
             <template v-slot:activator="{ on }">
               <v-btn  dark color="primary" v-on="on" x-small dense depressed height="30" width="auto" class="my-0 py-0">
-                <!-- <v-avatar size="30px">
+                <v-avatar size="30px">
                   <v-img :src='require(`../../assets/img/dps/${user.dp}`)'></v-img>
-                </v-avatar> -->
+                </v-avatar>
               </v-btn>
             </template>
             <v-list color="primary" dense>
@@ -41,12 +41,30 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: ['authUser'],
 
   mounted() {
     console.log(this.authUser)
-  }
+  },
+
+  computed: {
+		...mapGetters({
+			authCheck: 'auth/authCheck',
+			user: 'auth/user'
+		})
+  },
+  
+	methods: {
+		...mapActions({
+			signOutAction: 'auth/signOut'
+		}),
+
+		signOut () {
+			this.signOutAction()
+		}
+	}
 }
 </script>

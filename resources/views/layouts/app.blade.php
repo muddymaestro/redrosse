@@ -4,25 +4,28 @@
 @include('partials.head')
 
 <body>
-    <div id="app">
+    <v-app id="app">
+        <header>
+            @include('partials.nav')
+        </header>
 
-        <v-app>
-            <!-- @include('partials.nav') -->
-
-            <div class="mt-12"></div>
-            <v-row>
-                <v-col class="mx-auto" cols="12" lg="9" md="9" sm="6">
-                    <!-- @yield('content') -->
-                </v-col>
-            </v-row>
-            
+        <div class="mt-12"></div>
+        <v-row>
+            <v-col class="mx-auto" cols="12" lg="9" md="9" sm="6">
+                <article>
+                    @yield('content')
+                </article>
+            </v-col>
+        </v-row>
+        
+        <footer>
             @include('partials.footer')
-        <v-app>
-
-    </div>
+        </footer>
+    </v-app>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script type="application/javascript" src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
+
 

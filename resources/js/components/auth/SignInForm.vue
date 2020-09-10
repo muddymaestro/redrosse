@@ -1,12 +1,12 @@
 <template>
-	<!-- <v-card class="pa-2" outlined tile elevation="5">
+	<v-card class="pa-2" outlined tile elevation="5">
 		<v-list-item class="mb-6">
 			<v-list-item-content>
 				<v-list-item-title class="headline">Sign In Below...</v-list-item-title>
 				<hr />
 			</v-list-item-content>
 		</v-list-item>
-		<v-form class="px-4" id="check-login-form">
+		<form class="px-4">
 			<v-text-field
 				solo-inverted
 				clearable densed
@@ -27,26 +27,35 @@
 				@input="$v.password.$touch()"
 				@blur="$v.password.$touch()">
 			</v-text-field>
-			<button
-				@click.native="submit"
-			>
+			<v-btn
+				color="primary"
+				rounded block class="mt-4 mb-4"
+				@click="submit"
+				:loading="loading5"
+				:disabled="loading5">
 				Sign In
-			</button>
+				<template v-slot:loader>
+					<span class="custom-loader">
+						<v-progress-circular
+							indeterminate
+							color="primary"
+						></v-progress-circular>
+					</span>
+				</template>
+			</v-btn>
 			<div class="mb-8">
-				<a class="mt-2 mb-4 float-left">Forgot Password?</a>
-				<a class="mt-2 mb-4 float-right">Need An Account?</a>
+				<a href="#" class="mt-2 mb-4 float-left">Forgot Password?</a>
+				<a href="#" class="mt-2 mb-4 float-right">Need An Account?</a>
 			</div>
 			<div class="clear"></div>
-		</v-form>
-	</v-card> -->
-
-	<button @click="submit">Click Me!</button>
+		</form>
+	</v-card>
 </template>
 
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, email } from 'vuelidate/lib/validators'
-import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
 	name: 'SignInForm',
@@ -55,23 +64,12 @@ export default {
 		email: { required, email },
 		password: { required }
 	},
-
 	data: () => ({
 		password: '',
 		email: '',
 		loading5: false,
 		loader: null
 	}),
-
-	mounted: function () {
-		console.log('mounted')
-  		// window.addEventListener('click', function(event) {
-		// 	if(event.target.id == 'btn') {
-		// 		this.submit
-		// 	}
-		// })
-	},
-
 	watch: {
 		loader () {
 			const l = this.loader
@@ -82,7 +80,6 @@ export default {
 			this.loader = null
 		}
 	},
-
 	computed: {
 		passwordErrors () {
 			const errors = []
@@ -99,26 +96,18 @@ export default {
 			return errors
 		}
 	},
-
 	methods: {
-		submit: function() {
-			console.log("I'm the shit")
+		...mapActions({
+			signIn: 'auth/signIn'
+		}),
+		submit () {
+			this.loader = 'loading5'
+			this.$v.$touch()
+			if (!this.$v.$invalid) {
+				this.signIn({ email: this.email, 	password: this.password })
+				this.clear()
+			}
 		},
-		// async submit () {
-		// 	//this.loader = 'loading5'
-		// 	this.$v.$touch()
-		// 	console.log('before entering...')
-		// 	if (!this.$v.$invalid) {
-		// 		const formData = new FormData
-		// 		formData.append('email', this.email)
-		// 		formData.append('password', this.password)
-		// 		console.log('hello')
-		// 		const response = await axios.post('sign-in', formData)
-		// 		console.log(response.data.message)
-		// 		this.clear()
-		// 	}
-		// },
-
 		clear () {
 			this.$v.$reset()
 			this.email = ''

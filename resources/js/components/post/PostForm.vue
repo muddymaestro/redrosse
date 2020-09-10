@@ -99,6 +99,10 @@ export default {
     imageUrl: null
   }),
 
+  created() {
+    console.log('created...')
+  },
+  
   methods: { 
     ...mapActions({
       sendPost: 'post/sendPost'

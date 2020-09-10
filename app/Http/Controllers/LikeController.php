@@ -25,7 +25,7 @@ class LikeController extends Controller
 
         $postLike = Like::where('likeable_id', $post->id)->where('user_id', Auth::user()->id)->first();
 
-        event(new LikeEvent($postLike));
+        //event(new LikeEvent($postLike));
 
         return response()->json(['postLike' => $postLike, 'postId' => $post->id]);
     }

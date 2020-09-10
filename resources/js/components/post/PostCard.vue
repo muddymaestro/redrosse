@@ -92,17 +92,10 @@ export default {
     },
 
     created() {
+        console.log('created...')
         if (this.posts && this.posts.length > 0) return; // already fetched.
         this.fetchPosts()
     },
-
-    // mounted() {
-    //     const channel = pusher.subscribe('private-like');
-
-    //     channel.bind('LikeEvent', function(data) {
-    //         console.log(data);
-    //     });
-    // },
 
     computed: {
         ...mapState({

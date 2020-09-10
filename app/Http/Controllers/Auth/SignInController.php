@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -19,14 +20,14 @@ class SignInController extends Controller
 
         if ( $validator->fails() )  
         {
-            return response()->json([ 'message' => $validator->errors() ], 401);            
+            return response()->json(['message' => $validator->errors()], 401);            
         }
         
         if( !auth()->attempt( $request->only( 'email', 'password' ) ) ) 
         {
-            return response()->json(['message'=>'Wrong Credentials'], 401);
+            return response()->json(['message' => 'Wrong Credentials'], 401);
         }
-        
-        return redirect('/home');
+
+        return response()->json(['user' => auth()->user()]);
     }
 }
