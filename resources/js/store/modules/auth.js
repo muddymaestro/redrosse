@@ -35,7 +35,7 @@ export default {
 
 			if(response.data.success) {
 				try{
-					window.location.href = `https://redrosse.com/app/public/`;
+					window.location.href = `/`;
 				}
 				catch(error) {
 					console.log(error)
@@ -52,7 +52,7 @@ export default {
 			if(response.data.user) {
 				try{
 					commit('SET_USER', response.data.user)
-					window.location.href = `https://redrosse.com/app/public/home`;
+					window.location.href = `/home`;
 				}
 				catch(error) {
 					console.log(error)
@@ -64,7 +64,7 @@ export default {
 			// signout request to api
 			await axios.post('sign-out')
 			commit('DELETE_USER')
-			window.location.href = `https://redrosse.com/app/public`;
+			window.location.href = `/`;
 		}
 	}
 }
