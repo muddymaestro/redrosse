@@ -30,9 +30,9 @@ class SignUpController extends Controller
 
         $user->save();
         
-        if( $token = auth()->attempt( $request->only( 'email', 'password' ) ) )
+        if(auth()->attempt( $request->only( 'email', 'password' ) ) )
         {
-            return response()->json(['token' => $token], 201);
+            return response()->json(['success' => 'success']);
         }
 
         return response()->json(['message' => 'Opps! Server error, Try again later'], 500);

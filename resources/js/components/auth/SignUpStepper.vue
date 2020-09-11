@@ -161,6 +161,7 @@
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, minLength, email, sameAs } from 'vuelidate/lib/validators'
 import { mapActions } from 'vuex'
+
 export default {
 	name: 'SignUpStepper',
 
@@ -264,14 +265,8 @@ export default {
 					password: this.password,
 					password_confirmation: this.password_confirmation,
 					phone: this.phone
-				}).then(() => {
-					this.clear()
-					this.$router.replace({
-						name: 'Home'
-					}).catch((err) => {
-						throw new Error(`Problem handling something: ${err}.`)
-					})
-				}).catch((err) => {
+        })
+        .catch((err) => {
 					console.log(`sign-up error: ${err}.`)
 				})
 			}

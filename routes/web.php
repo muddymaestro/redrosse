@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/signup', function () {
+    return view('signup');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([ 'namespace' => 'Auth'], function() {

@@ -32,6 +32,15 @@ export default {
 		async signUp ({ dispatch }, formData) {
 			// send user data to api
 			const response = await axios.post('sign-up', formData)
+
+			if(response.data.success) {
+				try{
+					window.location.href = `https://redrosse.com/app/public/`;
+				}
+				catch(error) {
+					console.log(error)
+				}
+			}
 		},
 
 		// signin user

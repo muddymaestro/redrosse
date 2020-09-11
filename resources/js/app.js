@@ -25,6 +25,7 @@ Vue.component('navbar', require('./components/layouts/NavBar.vue').default);
 Vue.component('footerbar', require('./components/layouts/FooterBar.vue').default);
 Vue.component('slider', require('./components/auth/Slider.vue').default);
 Vue.component('sign-in-form', require('./components/auth/SignInForm.vue').default);
+Vue.component('sign-up-form', require('./components/auth/SignUp.vue').default);
 Vue.component('post-card', require('./components/post/PostCard.vue').default);
 Vue.component('post-form', require('./components/post/PostForm.vue').default);
 
