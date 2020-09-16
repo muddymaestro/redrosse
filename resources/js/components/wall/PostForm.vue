@@ -14,7 +14,11 @@
     <v-list-item three-line>
 
       <v-list-item-avatar color="red" class="mt-12">
-        <v-icon dark>mdi-account-circle</v-icon>
+        <v-img 
+          v-if="user.dp != 'default.gif'" 
+          :src="`./storage/pics/${user.dp}`"
+        ></v-img>
+        <v-icon v-else dark>mdi-account-circle</v-icon>
       </v-list-item-avatar>
 
       <v-form
@@ -81,7 +85,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -103,6 +107,12 @@ export default {
     image: '',
     imageUrl: null
   }),
+
+  computed: {
+    ...mapGetters({
+      user: 'user/getAuthUser'
+    }),
+  },
 
   methods: { 
     ...mapActions({

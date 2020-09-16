@@ -47,8 +47,8 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       v-model="date"
-                      label="Picker in dialog"
-                      prepend-icon="event"
+                      label="Date of birth"
+                      prepend-icon=""
                       readonly
                       v-on="on"
                     ></v-text-field>

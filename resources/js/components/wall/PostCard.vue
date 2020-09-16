@@ -4,7 +4,11 @@
             <v-list-item>
 
                 <v-list-item-avatar color="red">
-                    <v-icon dark>mdi-account-circle</v-icon>
+                    <v-img 
+                        v-if="user.dp != 'default.gif'" 
+                        :src="`./storage/pics/${user.dp}`"
+                    ></v-img>
+                    <v-icon v-else dark>mdi-account-circle</v-icon>
                 </v-list-item-avatar>
 
                 <v-list-item-content>
@@ -46,7 +50,7 @@
 
                 <v-btn text value="center" color="white">
                     <v-icon color="red" size="20" left>mdi-message-text</v-icon>
-                    <span class="hidden-sm-and-down">{{ post.comments.length }}</span>
+                    <span class="hidden-sm-and-down" color="red">{{ post.comments.length }}</span>
                 </v-btn>
             </v-layout>
 
@@ -92,7 +96,7 @@ export default {
         }),
 
         ...mapGetters({
-            user: 'auth/user'
+            user: 'user/getAuthUser'
         }),
     },
 

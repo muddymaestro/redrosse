@@ -28,7 +28,8 @@ Vue.component('sign-in-form', require('./components/auth/SignInForm.vue').defaul
 Vue.component('sign-up-form', require('./components/auth/SignUp.vue').default);
 Vue.component('post-card', require('./components/post/PostCard.vue').default);
 Vue.component('post-form', require('./components/post/PostForm.vue').default);
-
+Vue.component('profile-view', require('./components/profile/ProfileView.vue').default);
+Vue.component('following', require('./components/following/Following.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

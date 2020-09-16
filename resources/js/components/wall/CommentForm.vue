@@ -4,7 +4,7 @@
       <v-list-item-avatar color="red" size="30" class="mt-8">
         <v-img 
           v-if="user.dp != 'default.gif'" 
-          :src="`http://localhost/redrosse/api/public/storage/pics/${user.dp}`"
+          :src="`./storage/pics/${user.dp}`"
         ></v-img>
         <v-icon dark>mdi-account-circle</v-icon>
       </v-list-item-avatar>
@@ -64,7 +64,7 @@
 
     computed: {
       ...mapGetters({
-        user: 'auth/user'
+        user: 'user/getAuthUser'
       }),
     },
 

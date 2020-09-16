@@ -57,9 +57,9 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = User::find(auth()->user()->id)->first();
-        $user->update($request->all());
+        $user->save($request->all());
         
-        return response()->json(['user' => $user]);
+        return response()->json(['user' => $user, 'message' => 'okay this is it!']);
     
     }
 

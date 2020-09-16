@@ -70,6 +70,8 @@ import Follower from '../profile/Follower'
 import { mapGetters } from 'vuex'
 
 export default {
+    //props: ['user'],
+
     components: {
         Following,
         Follower

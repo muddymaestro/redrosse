@@ -7,8 +7,8 @@
     </div>
 
     <template v-if="authCheck">  
-      <v-btn color="primary" depressed small>Home</v-btn>
-      <v-btn color="primary" depressed small>Profile</v-btn>
+      <v-btn color="primary" depressed small href="/home">Home</v-btn>
+      <v-btn color="primary" depressed small href="/profile">Profile</v-btn>
       <v-btn color="primary" depressed small>Messages</v-btn>
       <v-btn color="primary" depressed small>Notifications</v-btn>
     </template>
@@ -24,7 +24,11 @@
             <template v-slot:activator="{ on }">
               <v-btn  dark color="primary" v-on="on" x-small dense depressed height="30" width="auto" class="my-0 py-0">
                 <v-avatar size="30px">
-                  <v-img :src='require(`../../assets/img/dps/${user.dp}`)'></v-img>
+                  <v-img 
+                    v-if="user.dp != 'default.gif'" 
+                    :src="'./storage/pics/' + user.dp"
+                  ></v-img>
+                  <v-icon v-else dark>mdi-account-circle</v-icon>
                 </v-avatar>
               </v-btn>
             </template>

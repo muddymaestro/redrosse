@@ -67,7 +67,7 @@ export default {
     
     computed: {
         ...mapGetters({
-            user: 'auth/user'
+            user: 'user/getAuthUser'
         })
     },
 

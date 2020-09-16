@@ -4,6 +4,10 @@
             <v-list-item>
 
                 <v-list-item-avatar color="red" size="30">
+                    <v-img 
+                        v-if="user.dp != 'default.gif'" 
+                        :src="`./storage/pics/${user.dp}`"
+                    ></v-img>
                     <v-icon dark>mdi-account-circle</v-icon>
                 </v-list-item-avatar>
 
@@ -63,7 +67,7 @@ export default {
     
     computed: {
         ...mapGetters({
-            user: 'auth/user'
+            user: 'user/getAuthUser'
         })
     },
 

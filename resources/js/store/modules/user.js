@@ -92,15 +92,15 @@ export default {
 		// update user profile
 		async updateProfile({ commit }, formData) {
 			const response = await axios.put('update-profile', formData)
-			console.log(response.data.user)
-			//commit('EDIT_PROFILE', response.data.user)
+			console.log(response.data.user, response.data.message)
+			//commit('auth/EDIT_USER_PROFILE', response.data.user, { root: true })
 		},
 
 		// update user profile picture
 		async updateProfilePicture({ commit }, formData) {
 			const response = await axios.post('update-profile-picture', formData)
 			console.log(response.data.user)
-			//commit('EDIT_PROFILE', response.data.user)
+			//commit('auth/EDIT_PROFILE_PICTURE', response.data.user, { root: true })
 		},
 
 		// update user cover picture

@@ -6,7 +6,7 @@
                 <v-list-item-avatar color="red" size="40">
                     <v-img 
                         v-if="post.user.dp != 'default.gif'" 
-                        :src="'./storage/pics/' + post.user.dp"
+                        :src="`./storage/pics/${post.user.dp}`"
                     ></v-img>
                     <v-icon v-else dark>mdi-account-circle</v-icon>
                 </v-list-item-avatar>
@@ -92,7 +92,6 @@ export default {
     },
 
     created() {
-        console.log('created...')
         if (this.posts && this.posts.length > 0) return; // already fetched.
         this.fetchPosts()
     },
@@ -103,7 +102,7 @@ export default {
         }),
 
         ...mapGetters({
-            user: 'auth/user'
+            user: 'user/getAuthUser'
         }),
     },
 

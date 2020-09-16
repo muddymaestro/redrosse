@@ -34,6 +34,9 @@ Route::group([ 'middleware' => 'auth', 'namespace' => 'Auth' ], function() {
 });
 
 Route::group([ 'middleware' => 'auth' ], function() {
+    Route::get('/profile', function () {
+        return view('profile');
+    });
     Route::get('users', 'UserController@index');
     Route::put('update-profile', 'UserController@updateProfile');
     Route::post('update-profile-picture', 'UserController@updateProfilePicture');

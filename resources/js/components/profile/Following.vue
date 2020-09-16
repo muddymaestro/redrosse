@@ -48,6 +48,9 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
+
+  //props: ['user'],
+
   data: () => ({
     dialog: false,
   }),
