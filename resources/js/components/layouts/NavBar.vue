@@ -17,8 +17,6 @@
     <template v-if="!authCheck">
       <v-btn color="primary" right depressed small href="/">Sign In</v-btn>
       <v-btn color="primary" depressed small righ href="/signup">Sign Up</v-btn>
-      <a href="/signup">Sign-up</a>
-      <a href="https://redrosse.com/app/public/signup">Sign-up</a>
     </template>
     <template  v-else>
         <div class="text-right">
