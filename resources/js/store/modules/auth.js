@@ -38,7 +38,7 @@ export default {
 					window.location.href = `https://redrosse.com/public`;
 				}
 				catch(error) {
-					console.log(error)
+					console.log(error.response.data.errors)
 				}
 			}
 		},
@@ -55,7 +55,7 @@ export default {
 					window.location.href = `https://redrosse.com/public/home`;
 				}
 				catch(error) {
-					console.log(error)
+					console.log(error.response.data.errors)
 				}
 			}
 		},
