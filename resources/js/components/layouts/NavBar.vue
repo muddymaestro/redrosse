@@ -7,16 +7,16 @@
     </div>
 
     <template v-if="authCheck">  
-      <v-btn color="primary" depressed small href="https://redrosse.com/public/home">Home</v-btn>
-      <v-btn color="primary" depressed small href="https://redrosse.com/public/profile">Profile</v-btn>
+      <v-btn color="primary" depressed small href="/home">Home</v-btn>
+      <v-btn color="primary" depressed small href="/profile">Profile</v-btn>
       <v-btn color="primary" depressed small>Messages</v-btn>
       <v-btn color="primary" depressed small>Notifications</v-btn>
     </template>
 
     <v-spacer></v-spacer>
     <template v-if="!authCheck">
-      <v-btn color="primary" right depressed small href="https://redrosse.com/public/signup">Sign In</v-btn>
-      <v-btn color="primary" depressed small righ href="https://redrosse.com/public/signup">Sign Up</v-btn>
+      <v-btn color="primary" right depressed small href="/">Sign In</v-btn>
+      <v-btn color="primary" depressed small righ href="/signup">Sign Up</v-btn>
     </template>
     <template  v-else>
         <div class="text-right">
